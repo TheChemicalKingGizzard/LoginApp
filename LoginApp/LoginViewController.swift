@@ -9,15 +9,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet var userNameButton: UIButton!
-    @IBOutlet var passwordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        passwordButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
 
-
+    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
+        guard let _ = unwindSegue.source as? WelcomeViewController else { return }
+    }
 }
 
