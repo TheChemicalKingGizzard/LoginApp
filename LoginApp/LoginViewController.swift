@@ -9,17 +9,17 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    
+    // MARK: - IBOutlets
     @IBOutlet var userName: UITextField!
     @IBOutlet var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    // MARK: - IBActions
     @IBAction func loginTapped(_ sender: Any) {
         
-        if userName.text == "User" && password.text == "12345" {
+        if userName.text == "User" && password.text == "123" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             guard let secondVC = storyboard.instantiateViewController(
@@ -29,13 +29,13 @@ class LoginViewController: UIViewController {
             //  Что в данном случае важнее: правило 80 символов или читаемость?
             
             secondVC.name = userName.text
+            view.endEditing(true)
             show(secondVC, sender: nil)
             userName.text = ""
         } else {
             showAlert(with: "Login or password are incorrect",
-                      and: "Try again")
+                       and: "Try again")
         }
-        
         password.text = ""
     }
     
@@ -46,14 +46,18 @@ class LoginViewController: UIViewController {
     }
     @IBAction func remindPassword(_ sender: Any) {
         showAlert(with: "Seriously? 🙄",
-                  and: "Your password is 12345")
+                  and: "Your password is 123")
     }
-    
-    
+
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
         guard let _ = unwindSegue.source as? WelcomeViewController else {
             return
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        self.view.endEditing(true)
     }
 }
 
