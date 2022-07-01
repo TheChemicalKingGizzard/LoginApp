@@ -9,9 +9,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet var userNameButton: UIButton!
+    @IBOutlet var passwordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        userNameButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        passwordButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
 
 
